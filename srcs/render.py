@@ -120,13 +120,15 @@ def render_dashboard(window, config, dashboard):
     text.value(f"{config.angle_y:.2f}", dashboard, y_angle, padding)
     z_angle, y = text.item("angle z:", dashboard, item_x, y)
     text.value(f"{config.angle_z:.2f}", dashboard, z_angle, padding)
+    scale, y = text.item("scale:", dashboard, item_x, y)
+    text.value(f"{config.scale:.2f}", dashboard, scale, padding)
     y += 30
 
     y = text.title("[ CONTROLS ]", dashboard, title_x, y)
-    space, y = text.item("SPACE:", dashboard, item_x, y)
-    text.value("next map", dashboard, space, padding)
+    b_n, y = text.item("B / N:", dashboard, item_x, y)
+    text.value("prev map / next map", dashboard, b_n, padding)
     arrows, y = text.item("ARROWS:", dashboard, item_x, y)
-    text.value("move", dashboard, arrows, padding)
+    text.value("move map", dashboard, arrows, padding)
     w_s, y = text.item("W / S:", dashboard, item_x, y)
     text.value("rotate X", dashboard, w_s, padding)
     a_d, y = text.item("A / D:", dashboard, item_x, y)
