@@ -1,9 +1,9 @@
-import math
 import os
 import sys
 import pygame as pg
 
 from srcs import parse, utils, color
+
 
 class FdfConfig:
     def __init__(self, window_w, window_h, dashboard_w):
@@ -17,7 +17,7 @@ class FdfConfig:
 
         self.heightmap = None
         self.model_verteces = None
-        
+
         self.z_multiplier = 0.2
         self.z_min_limit = 0.001
         self.z_max_limit = 5
@@ -31,14 +31,14 @@ class FdfConfig:
             "basictest": 0.3,
             "elem": 0.2,
             "elem2": 0.5,
-            "mars": 0.4, 
+            "mars": 0.4,
             "WEST_COAST_USA_OCEAN": 0.016,
-            "LOS_ANDES_OCEAN": 0.016, 
-            "CALIFORNIA_OCEAN": 0.016, 
+            "LOS_ANDES_OCEAN": 0.016,
+            "CALIFORNIA_OCEAN": 0.016,
             "HIMALAYA_OCEAN": 0.08,
             "WHOLE_WORLD_OCEAN": 0.016,
             "pentenegpos": 0.2,
-            "plat": 0.2, 
+            "plat": 0.2,
             "pnp_flat": 0.2,
             "pylone": 2.2,
             "pyra": 0.7,
@@ -60,7 +60,7 @@ class FdfConfig:
         self.padding = 50
 
         self.projection_bounds = 0, 0, 0, 0
-        
+
         self.map_center_x = 0
         self.map_center_y = 0
 
@@ -128,12 +128,14 @@ class FdfConfig:
 
         utils.get_min_z(self)
         utils.get_max_z(self)
-        
+
         parse.get_model_verteces(self)
-        
+
         map_key = os.path.splitext(map_files[map_idx])[0]
         self.file_name = map_key
-        self.z_multiplier = self.z_multi_default.get(map_key, self.z_multiplier)
+        self.z_multiplier = self.z_multi_default.get(
+            map_key, self.z_multiplier
+        )
 
         self.angle_x = -1.05
         self.angle_y = 0.0
@@ -169,10 +171,10 @@ class DashBoard:
         self.window_h = window_h
 
         self.dashboard_surface = pg.Surface(
-            (self.dashboard_w,self.window_h),
+            (self.dashboard_w, self.window_h),
             pg.SRCALPHA
         )
- 
+
         self.font_small = pg.font.SysFont("consolas", 14)
         self.font_medium = pg.font.SysFont("consolas", 18)
         self.font_big = pg.font.SysFont("consolas", 24)

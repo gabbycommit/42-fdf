@@ -1,4 +1,4 @@
-def get_t(z ,config):
+def get_t(z, config):
     if z < 0:
         return abs(z) / abs(config.min_z)
     elif z > 0:

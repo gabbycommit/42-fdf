@@ -1,13 +1,14 @@
 from srcs import utils, text
 
+
 def render_map(window, config):
     if config.needs_redraw:
         config.map_surface.fill((0, 0, 0))
 
         center_x = (config.dashboard_w
-                    + (config.window_w - config.dashboard_w) 
+                    + (config.window_w - config.dashboard_w)
                     // 2
-        )
+                    )
         center_y = config.window_h // 2
 
         for y, row in enumerate(config.isometric_projection):
@@ -74,7 +75,7 @@ def render_map(window, config):
                     )
 
         config.needs_redraw = False
-    
+
     window.blit(config.map_surface, (0, 0))
 
 
@@ -92,7 +93,7 @@ def render_dashboard(window, config, dashboard):
     header_rect = header.get_rect(topleft=(title_x, y))
     dashboard.dashboard_surface.blit(header, header_rect)
     y += 60
-    
+
     y = text.title("[ MAP INFO ]", dashboard, title_x, y)
     file_name_rect, y = text.item("Map's name:", dashboard, item_x, y)
     text.value(f"{config.file_name}", dashboard, file_name_rect, padding)
@@ -147,10 +148,5 @@ def render_dashboard(window, config, dashboard):
     text.value("Ice Tundra", dashboard, ice_tundra, padding)
     desert_oasis, y = text.item("4:", dashboard, item_x, y)
     text.value("Dessert Oasis", dashboard, desert_oasis, padding)
-
-
-
-
-    
 
     window.blit(dashboard.dashboard_surface, (0, 0))

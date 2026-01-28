@@ -22,8 +22,8 @@ def get_heightmap(fdf_path, config):
 
                 z_row = []
                 for z in line:
-                    if "," in z: # whether contain ","
-                        token = z.split(",") # [3, color]
+                    if "," in z:  # whether contain ","
+                        token = z.split(",")  # [3, color]
                         try:
                             z_row.append(int(token[0]))
                         except ValueError:
@@ -37,12 +37,12 @@ def get_heightmap(fdf_path, config):
                             sys.exit(1)
 
                 config.heightmap.append(z_row)
-        
+
         # empty height
         if not config.heightmap:
             print("Error: file is empty")
             sys.exit(1)
-    
+
     except FileNotFoundError:
         print("Error: file not found")
         sys.exit(1)
@@ -53,7 +53,9 @@ def is_valid_shape(heightmap):
 
     for y, row in enumerate(heightmap):
         if len(row) != width:
-            print(f"Error: lenght must be {width} but found {len(row)} in row{y}")
+            print(
+                f"Error: lenght must be {width} but found {len(row)} in row{y}"
+            )
             return False
 
     return True
@@ -87,7 +89,7 @@ def isometric_projection(config):
 
             curr_x = x - center_x3d
             curr_y = y - center_y3d
-            curr_z = (z - center_z3d) * config.z_multiplier 
+            curr_z = (z - center_z3d) * config.z_multiplier
 
             # z-axis rotate
             x_z = (curr_x * cz) - (curr_y * sz)
@@ -108,5 +110,5 @@ def isometric_projection(config):
             ny = final_y
 
             projection_row.append((nx, ny))
-        
+
         config.isometric_projection.append(projection_row)

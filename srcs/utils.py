@@ -1,6 +1,7 @@
 import math
 import pygame as pg
 
+
 def get_max_z(config):
     config.max_z = config.heightmap[0][0]
 
@@ -24,25 +25,27 @@ def auto_calculate_z_multiplier(config):
     y_range = config.map_h
 
     z_range = abs(config.max_z - config.min_z)
-    
+
     if z_range == 0:
         return 0.1
-    
+
     config.z_multiplier = (max(x_range, y_range) * 0.15) / z_range
 
 
 def draw_line(window, p0, p1, c0, c1):
     x0, y0 = p0
     x1, y1 = p1
-    
+
     dx = x1 - x0
     dy = y1 - y0
     dist = math.hypot(dx, dy)
-    
-    if dist == 0: return
-    
+
+    if dist == 0:
+        return
+
     steps = int(dist)
-    if steps == 0: return
+    if steps == 0:
+        return
 
     r0, g0, b0 = c0
     dr = (c1[0] - r0) / steps
@@ -56,10 +59,10 @@ def draw_line(window, p0, p1, c0, c1):
         curr_r = int(r0 + dr * i)
         curr_g = int(g0 + dg * i)
         curr_b = int(b0 + db * i)
-        
+
         start_pos = (x0 + ux * i, y0 + uy * i)
         end_pos = (x0 + ux * (i + 1), y0 + uy * (i + 1))
-        
+
         pg.draw.line(window, (curr_r, curr_g, curr_b), start_pos, end_pos, 1)
 
 
@@ -70,10 +73,14 @@ def get_projection_bounds(config):
 
     for row in config.isometric_projection:
         for nx, ny in row:
-            if nx < min_x: min_x = nx
-            if nx > max_x: max_x = nx
-            if ny < min_y: min_y = ny
-            if ny > max_y: max_y = ny
+            if nx < min_x:
+                min_x = nx
+            if nx > max_x:
+                max_x = nx
+            if ny < min_y:
+                min_y = ny
+            if ny > max_y:
+                max_y = ny
 
     config.projection_bounds = min_x, max_x, min_y, max_y
 
@@ -98,4 +105,3 @@ def update_scale(config):
     scale_y = available_space_y / map_y
 
     config.scale = min(scale_x, scale_y)
-

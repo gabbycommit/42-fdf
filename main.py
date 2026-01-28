@@ -34,8 +34,11 @@ while running:
             if e.key == pg.K_ESCAPE:
                 running = False
             # next map control
-            elif e.key == pg.K_SPACE:
+            elif e.key == pg.K_n:
                 current_idx = (current_idx + 1) % len(map_files)
+                config.load_new_map(MAP_DIR, map_files, current_idx)
+            elif e.key == pg.K_b:
+                current_idx = (current_idx - 1) % len(map_files)
                 config.load_new_map(MAP_DIR, map_files, current_idx)
             # color theme control
             elif e.key == pg.K_1:
@@ -118,5 +121,5 @@ while running:
     render.render_dashboard(window, config, dashboard)
     pg.display.flip()
     clock.tick(FPS)
-            
+
 pg.quit()
