@@ -42,6 +42,8 @@ Originally, FDF is intended to use **Bresenham’s line algorithm** for drawing 
 
 To improve performance, I replaced it with a custom draw_line function using `pygame.draw.line` with color interpolation to create a gradient effect. While this doesn’t fully replicate Bresenham’s algorithm, it achieves smoother gradient lines with slightly better performance on larger maps.
 
+---
+
 ## ⌨️Controls
 
 | Key               | Action                           |
