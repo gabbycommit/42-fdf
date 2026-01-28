@@ -1,6 +1,7 @@
 def get_t(z, config):
     if z < 0:
-        return abs(z) / abs(config.min_z)
+        t = abs(z) / abs(config.min_z)
+        return t ** 0.4
     elif z > 0:
         return abs(z) / abs(config.max_z)
     else:

@@ -44,6 +44,8 @@ class FdfConfig:
             "pyra": 0.7,
             "t1": 0.2,
             "t2": 0.2,
+            "pyramide": 0.7,
+            "ljapan": 0.04
         }
         self.isometric_projection = []
 
@@ -82,8 +84,8 @@ class FdfConfig:
                 "land3": (255, 69, 0),
             },
             "cyber_punk": {
-                "water1": (44, 62, 80),
-                "water2": (48, 25, 52),
+                "water1": (4, 217, 255),
+                "water2": (28, 28, 61), # (4, 217, 255
                 "ground": (255, 255, 255),
                 "land1": (191, 0, 255),
                 "land2": (255, 105, 180),
